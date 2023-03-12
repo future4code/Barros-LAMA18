@@ -1,0 +1,16 @@
+{
+  "name": "lama-template",
+  "version": "1.0.0",
+  "description": "Template para o projeto LAMA",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "api",
+    "LAMA"
+  ],
+  "author": "Israel,Andréa,Júnior e Fay",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+  }
+}
