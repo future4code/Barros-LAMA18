@@ -1,26 +1,45 @@
-import { UserInputDTO, LoginInputDTO } from "../model/User";
+import { UserInputDTO, LoginInputDTO, User } from "../model/User";
 import { UserDatabase } from "../data/UserDatabase";
 import { IdGenerator } from "../services/IdGenerator";
 import { HashManager } from "../services/HashManager";
 import { Authenticator } from "../services/Authenticator";
+import { InputMissingError } from "../error/UserErrors";
+import { BaseError } from "../error/BaseError";
 
 export class UserBusiness {
 
-    async createUser(user: UserInputDTO) {
+    async createUser(user: UserInputDTO):Promise<string> {
+        try {
+            if (!user.name || !user.email || !user.password || !user.role) {
+                throw new InputMissingError()
+            }
+    
+            const idGenerator = new IdGenerator();
+            const id = idGenerator.generate();
+    
+            const hashManager = new HashManager();
+            const hashPassword = await hashManager.hash(user.password);
+    
+            const newUser: User = User.toUserModel({
+                id,
+                name: user.name,
+                email: user.email,
+                password: hashPassword,
+                role: user.role
+            })
+    
+            const userDatabase = new UserDatabase();
+            await userDatabase.createUser(newUser);
+    
+            const authenticator = new Authenticator();
+            const accessToken = authenticator.generateToken({ id, role: user.role });
+    
+            return accessToken;
+            
+        } catch (error:any) {
+            throw new BaseError(error.code || 400, error.message)
+        }
 
-        const idGenerator = new IdGenerator();
-        const id = idGenerator.generate();
-
-        const hashManager = new HashManager();
-        const hashPassword = await hashManager.hash(user.password);
-
-        const userDatabase = new UserDatabase();
-        await userDatabase.createUser(id, user.email, user.name, hashPassword, user.role);
-
-        const authenticator = new Authenticator();
-        const accessToken = authenticator.generateToken({ id, role: user.role });
-
-        return accessToken;
     }
 
     async getUserByEmail(user: LoginInputDTO) {
