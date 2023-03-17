@@ -1,9 +1,21 @@
+// endpoint de cadastro
 POST http://localhost:3003/user/signup
 Content-Type: application/json
 
 {
+    "email": "silvia@email.com",
+    "name": "Silvia Paccola",
+    "password": "abc123",
+    "role": "admin"
+}
+
+###
+
+// endpoint de login
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
     "email": "bianca@email.com",
-    "name": "Bianca Paccola",
-    "password": "123abc",
-    "role": "ADMIN"
+    "password": "123abc"
 }

@@ -10,8 +10,8 @@ export class UserController {
             const input: UserInputDTO = {
                 email: req.body.email,
                 name: req.body.name,
-                password: req.body.password,
-                role: (req.body.role).toUpperCase()
+                password: req.body.password as string,
+                role: req.body.role ? (req.body.role).toUpperCase() : undefined
             }
 
             const userBusiness = new UserBusiness();
@@ -22,12 +22,10 @@ export class UserController {
         } catch (error:any) {
             res.status(error.code || 400).send({ error: error.message });
         }
-
         await BaseDatabase.destroyConnection();
     }
 
     async login(req: Request, res: Response) {
-
         try {
 
             const loginData: LoginInputDTO = {
@@ -41,7 +39,7 @@ export class UserController {
             res.status(200).send({ token });
 
         } catch (error:any) {
-            res.status(400).send({ error: error.message });
+            res.status(error.code || 400).send({ error: error.message });
         }
 
         await BaseDatabase.destroyConnection();

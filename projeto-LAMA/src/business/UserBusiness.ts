@@ -3,15 +3,28 @@ import { UserDatabase } from "../data/UserDatabase";
 import { IdGenerator } from "../services/IdGenerator";
 import { HashManager } from "../services/HashManager";
 import { Authenticator } from "../services/Authenticator";
-import { InputMissingError } from "../error/UserErrors";
+import { IncompleteUserDataLogin, IncompleteUserDataSignup, InvalidEmail, InvalidName, InvalidPassword } from "../error/UserErrors";
 import { BaseError } from "../error/BaseError";
 
 export class UserBusiness {
 
     async createUser(user: UserInputDTO):Promise<string> {
-        try {
+        try {7
+
             if (!user.name || !user.email || !user.password || !user.role) {
-                throw new InputMissingError()
+                throw new IncompleteUserDataSignup()
+            }
+
+            if (!user.email.includes("@")) {
+                throw new InvalidEmail()
+            }
+
+            if (user.password.length < 6) {
+                throw new InvalidPassword()
+            }
+
+            if (user.name.length < 3) {
+                throw new InvalidName()
             }
     
             const idGenerator = new IdGenerator();
@@ -43,20 +56,37 @@ export class UserBusiness {
     }
 
     async getUserByEmail(user: LoginInputDTO) {
+        try {
 
-        const userDatabase = new UserDatabase();
-        const userFromDB = await userDatabase.getUserByEmail(user.email);
+            if(!user.email || !user.password) {
+                throw new IncompleteUserDataLogin()
+            }
+ 
+            if (!user.email.includes("@")) {
+                throw new InvalidEmail()
+            }
 
-        const hashManager = new HashManager();
-        const hashCompare = await hashManager.compare(user.password, userFromDB.getPassword());
+            if (user.password.length < 6) {
+                throw new InvalidPassword()
+            }
 
-        const authenticator = new Authenticator();
-        const accessToken = authenticator.generateToken({ id: userFromDB.getId(), role: userFromDB.getRole() });
-
-        if (!hashCompare) {
-            throw new Error("Invalid Password!");
+            const userDatabase = new UserDatabase();
+            const userFromDB = await userDatabase.getUserByEmail(user.email);
+    
+            const hashManager = new HashManager();
+            const hashCompare = await hashManager.compare(user.password, userFromDB.getPassword());
+    
+            const authenticator = new Authenticator();
+            const accessToken = authenticator.generateToken({ id: userFromDB.getId(), role: userFromDB.getRole() });
+    
+            if (!hashCompare) {
+                throw new InvalidPassword();
+            }
+    
+            return accessToken;
+            
+        } catch (error:any) {
+            throw new BaseError(error.code || 400, error.message)
         }
-
-        return accessToken;
     }
 }
