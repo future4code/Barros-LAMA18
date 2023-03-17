@@ -17,7 +17,7 @@ export class UserController {
             const userBusiness = new UserBusiness();
             const token = await userBusiness.createUser(input);
 
-            res.status(200).send({ token });
+            res.status(201).send({ token });
 
         } catch (error:any) {
             res.status(error.code || 400).send({ error: error.message });
@@ -36,7 +36,7 @@ export class UserController {
             const userBusiness = new UserBusiness();
             const token = await userBusiness.getUserByEmail(loginData);
 
-            res.status(200).send({ token });
+            res.status(201).send({ token });
 
         } catch (error:any) {
             res.status(error.code || 400).send({ error: error.message });

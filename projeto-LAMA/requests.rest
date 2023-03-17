@@ -19,3 +19,16 @@ Content-Type: application/json
     "email": "bianca@email.com",
     "password": "123abc"
 }
+
+### 
+
+// Endpoint para registrar uma banda
+POST http://localhost:3003/bands/register
+Content-Type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFmY2Y5NzY3LWVhMjYtNDkyYy1hMmQxLWZkNjI0M2RlNjZkZCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3OTA5MzA3NSwiZXhwIjoxNjc5MDk2Njc1fQ.M4cQktv9HYLAeZReWN9JIonRjxhc2xIBSDQdN1X69Zk
+
+{
+    "name": "The New Band",
+    "musicGenre": "Rockabilly",
+    "responsible": "Rick Richards"
+}
