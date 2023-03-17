@@ -3,10 +3,10 @@ POST http://localhost:3003/user/signup
 Content-Type: application/json
 
 {
-    "email": "silvia@email.com",
-    "name": "Silvia Paccola",
+    "email": "ederson@email.com",
+    "name": "Ederson Carlos",
     "password": "abc123",
-    "role": "admin"
+    "role": "normal"
 }
 
 ###
@@ -16,8 +16,8 @@ POST http://localhost:3003/user/login
 Content-Type: application/json
 
 {
-    "email": "bianca@email.com",
-    "password": "123abc"
+    "email": "ederson@email.com",
+    "password": "abc123"
 }
 
 ### 
@@ -25,10 +25,10 @@ Content-Type: application/json
 // Endpoint para registrar uma banda
 POST http://localhost:3003/bands/register
 Content-Type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFmY2Y5NzY3LWVhMjYtNDkyYy1hMmQxLWZkNjI0M2RlNjZkZCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3OTA5MzA3NSwiZXhwIjoxNjc5MDk2Njc1fQ.M4cQktv9HYLAeZReWN9JIonRjxhc2xIBSDQdN1X69Zk
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2Y2IyOGIyLTk1ZmQtNDkxYi1iNzU3LTAyYjkyOWQ3NjM1MiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3OTA5NDgxNiwiZXhwIjoxNjc5MDk4NDE2fQ.AZS5GkrYIkwmcPMWq-GIr3iNaoaCrS0UNEjZ0N88Drg
 
 {
-    "name": "The New Band",
-    "musicGenre": "Rockabilly",
-    "responsible": "Rick Richards"
+    "name": "The Brothers Band",
+    "musicGenre": "Ska",
+    "responsible": "Anthony Keys"
 }
