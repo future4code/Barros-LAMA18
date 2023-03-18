@@ -18,7 +18,7 @@ export class UserController {
     } catch (error: any) {
       res.status(error.code || 400).send({ error: error.message });
     } finally {
-      await BaseDatabase.destroyConnection();
+      // await BaseDatabase.destroyConnection();
     }
   }
 
@@ -33,7 +33,7 @@ export class UserController {
     } catch (error: any) {
       res.status(error.code || 400).send({ error: error.message });
     } finally {
-      await BaseDatabase.destroyConnection();
+    //   await BaseDatabase.destroyConnection();
     }
   }
 }

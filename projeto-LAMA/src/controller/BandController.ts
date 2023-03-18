@@ -20,4 +20,14 @@ export class BandController {
       res.status(error.code || 400).send({ error: error.message });
     }
   }
+
+  async getBandDetails (req: Request, res: Response): Promise<void> {
+    try {
+      const input = (req.query.name || req.query.id) as string
+      const result = await bandBusiness.getBandDetails(input)
+      res.status(201).send({result: result})
+    } catch (error:any) {
+      res.status(error.code || 400).send({ error: error.message });
+    }
+  }
 }

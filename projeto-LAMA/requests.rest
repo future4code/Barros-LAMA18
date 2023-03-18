@@ -32,3 +32,15 @@ authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2Y2IyOGIyLTk1ZmQt
     "musicGenre": "Ska",
     "responsible": "Anthony Keys"
 }
+
+###
+
+// Endpoint para buscar uma banda pelo nome - pode-se passar tanto o nome completo separando as setenças com '+' ou por uma parte que contenha no nome, no segundo caso vem todas que encontrar
+GET http://localhost:3003/bands/details?name=The+Brothers+Band
+Content-Type: application/json
+
+###
+
+//Endpoint para buscar uma banda pelo id
+GET http://localhost:3003/bands/details?id=4b123454-8479-4790-b60c-5efc77106258
+Content-Type: application/json

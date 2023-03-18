@@ -1,6 +1,8 @@
 import { BandDatabase } from "../data/BandDatabase";
 import {
+  BandNotFound,
   IncompleteBandDataRegister,
+  InputSearchError,
   UnaunthorizedUser,
 } from "../error/BandErrors";
 import { BaseError } from "../error/BaseError";
@@ -39,5 +41,16 @@ export class BandBusiness {
     } catch (error: any) {
       throw new BaseError(error.code || 400, error.message);
     }
+  }
+
+  async getBandDetails (input: string):Promise<Band[]> {
+    if (!input) {
+      throw new InputSearchError()
+    }
+    const result = await this.bandDatabase.getBandDetails(input)
+    if (result.length === 0) {
+      throw new BandNotFound()
+    }
+    return result;
   }
 }

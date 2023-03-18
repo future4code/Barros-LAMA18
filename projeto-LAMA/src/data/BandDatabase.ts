@@ -18,4 +18,19 @@ export class BandDatabase extends BaseDatabase {
       throw new BaseError(400, error.message || error.sqlMessage);
     }
   }
+
+  async getBandDetails (input: string):Promise<Band[]> {
+    try {
+      const result = await this.getConnection()
+      .select("*")
+      .into(BandDatabase.TABLE_NAME)
+      .whereLike('name', `%${input}%`)
+      .orWhereLike('id', input)
+      console.log(result);
+
+      return result;
+    } catch (error:any) {
+      throw new BaseError(400, error.message || error.sqlMessage);
+    }
+  }
 }
