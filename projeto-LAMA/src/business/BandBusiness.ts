@@ -1,8 +1,10 @@
 import { BandDatabase } from "../data/BandDatabase";
 import {
   BandNotFound,
+  DuplicateNameEntryError,
   IncompleteBandDataRegister,
   InputSearchError,
+  InvalidNameBand,
   UnaunthorizedUser,
 } from "../error/BandErrors";
 import { BaseError } from "../error/BaseError";
@@ -28,6 +30,10 @@ export class BandBusiness {
         throw new IncompleteBandDataRegister();
       }
 
+      if(input.name.length < 3) {
+        throw new InvalidNameBand()
+      }
+
       const id = this.idGenerator.generate();
 
       const band = new Band(
@@ -39,7 +45,11 @@ export class BandBusiness {
 
       await this.bandDatabase.registerBand(band);
     } catch (error: any) {
-      throw new BaseError(error.code || 400, error.message);
+      if (error.message.includes('Duplicate entry')) {
+        throw new DuplicateNameEntryError()
+      } else {
+        throw new BaseError(error.code || 400, error.message);
+      }
     }
   }
 

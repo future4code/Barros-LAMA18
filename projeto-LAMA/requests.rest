@@ -16,8 +16,8 @@ POST http://localhost:3003/user/login
 Content-Type: application/json
 
 {
-    "email": "ederson@email.com",
-    "password": "abc123"
+    "email": "bianca@email.com",
+    "password": "123abc"
 }
 
 ### 
@@ -25,7 +25,7 @@ Content-Type: application/json
 // Endpoint para registrar uma banda
 POST http://localhost:3003/bands/register
 Content-Type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2Y2IyOGIyLTk1ZmQtNDkxYi1iNzU3LTAyYjkyOWQ3NjM1MiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3OTA5NDgxNiwiZXhwIjoxNjc5MDk4NDE2fQ.AZS5GkrYIkwmcPMWq-GIr3iNaoaCrS0UNEjZ0N88Drg
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFmY2Y5NzY3LWVhMjYtNDkyYy1hMmQxLWZkNjI0M2RlNjZkZCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3OTIzMTQxNSwiZXhwIjoxNjc5MjM1MDE1fQ.ssp80IS4_WLiOob3OxyWOrc247RR_nPSOafgisUWp4o
 
 {
     "name": "The Brothers Band",

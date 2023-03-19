@@ -26,3 +26,15 @@ export class InputSearchError extends BaseError {
     super(422, "Must to pass a query: name or id");
   }
 }
+
+export class DuplicateNameEntryError extends BaseError {
+  constructor() {
+    super(409, "Duplicate entry for name Band name already registered.")
+  }
+}
+
+export class InvalidNameBand extends BaseError {
+  constructor() {
+    super(422, "Invalid too short name")
+  }
+}

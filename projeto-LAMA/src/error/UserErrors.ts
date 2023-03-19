@@ -29,3 +29,9 @@ export class InvalidPassword extends BaseError {
     super(401, "Invalid Password!");
   }
 }
+
+export class DuplicateEmailEntry extends BaseError {
+  constructor() {
+    super(409, "Duplicate entry: This email already exists in batabase");
+  }
+}
