@@ -26,7 +26,6 @@ export class BandDatabase extends BaseDatabase {
       .into(BandDatabase.TABLE_NAME)
       .whereLike('name', `%${input}%`)
       .orWhereLike('id', input)
-      console.log(result);
 
       return result;
     } catch (error:any) {

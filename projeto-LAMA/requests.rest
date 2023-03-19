@@ -25,12 +25,12 @@ Content-Type: application/json
 // Endpoint para registrar uma banda
 POST http://localhost:3003/bands/register
 Content-Type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2Y2IyOGIyLTk1ZmQtNDkxYi1iNzU3LTAyYjkyOWQ3NjM1MiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3OTA5NDgxNiwiZXhwIjoxNjc5MDk4NDE2fQ.AZS5GkrYIkwmcPMWq-GIr3iNaoaCrS0UNEjZ0N88Drg
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFmY2Y5NzY3LWVhMjYtNDkyYy1hMmQxLWZkNjI0M2RlNjZkZCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3OTI1MDk4MiwiZXhwIjoxNjc5MjU0NTgyfQ.IrW9YOv3EzLa9XIOxgAVNDV5wy0HfgVQjTqq8e77cd8
 
 {
-    "name": "The Brothers Band",
-    "musicGenre": "Ska",
-    "responsible": "Anthony Keys"
+    "name": "Sons of Anarch",
+    "musicGenre": "Punk",
+    "responsible": "Bruce Joe"
 }
 
 ###
@@ -43,4 +43,24 @@ Content-Type: application/json
 
 //Endpoint para buscar uma banda pelo id
 GET http://localhost:3003/bands/details?id=4b123454-8479-4790-b60c-5efc77106258
+Content-Type: application/json
+
+###
+
+//Endpoint para criar um show
+POST http://localhost:3003/shows/post
+Content-Type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdjZGJlN2ZiLTZjYzItNDgwYS04YTA5LWI0ZDkyNjEwNzYzOCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NzkyNTgyNTAsImV4cCI6MTY3OTI2MTg1MH0.1h79M1l0cbaHr548j85W5HXtqVPy_5o6ZiOFsKDzsCo
+
+{
+    "weekDay": "domingo",
+    "startTime": 12,
+    "endTime": 14,
+    "bandId": "f21cc70c-0955-499b-b543-04356c3440be"
+}
+
+###
+
+// Endpoint para buscar os shows pelo dia
+GET http://localhost:3003/shows/segunda
 Content-Type: application/json
