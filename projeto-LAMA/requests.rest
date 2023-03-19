@@ -1,9 +1,46 @@
+// endpoint de cadastro
 POST http://localhost:3003/user/signup
 Content-Type: application/json
 
 {
-    "email": "bianca@email.com",
-    "name": "Bianca Paccola",
-    "password": "123abc",
-    "role": "ADMIN"
+    "email": "ederson@email.com",
+    "name": "Ederson Carlos",
+    "password": "abc123",
+    "role": "normal"
 }
+
+###
+
+// endpoint de login
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email": "ederson@email.com",
+    "password": "abc123"
+}
+
+### 
+
+// Endpoint para registrar uma banda
+POST http://localhost:3003/bands/register
+Content-Type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2Y2IyOGIyLTk1ZmQtNDkxYi1iNzU3LTAyYjkyOWQ3NjM1MiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3OTA5NDgxNiwiZXhwIjoxNjc5MDk4NDE2fQ.AZS5GkrYIkwmcPMWq-GIr3iNaoaCrS0UNEjZ0N88Drg
+
+{
+    "name": "The Brothers Band",
+    "musicGenre": "Ska",
+    "responsible": "Anthony Keys"
+}
+
+###
+
+// Endpoint para buscar uma banda pelo nome - pode-se passar tanto o nome completo separando as setenças com '+' ou por uma parte que contenha no nome, no segundo caso vem todas que encontrar
+GET http://localhost:3003/bands/details?name=The+Brothers+Band
+Content-Type: application/json
+
+###
+
+//Endpoint para buscar uma banda pelo id
+GET http://localhost:3003/bands/details?id=4b123454-8479-4790-b60c-5efc77106258
+Content-Type: application/json
