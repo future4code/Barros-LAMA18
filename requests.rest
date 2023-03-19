@@ -1,66 +1,66 @@
 // endpoint de cadastro
-POST http://localhost:3003/user/signup
+POST https://lama-bianca-paccola.onrender.com/user/signup
 Content-Type: application/json
 
 {
-    "email": "ederson@email.com",
-    "name": "Ederson Carlos",
-    "password": "abc123",
-    "role": "normal"
+    "email": "teste@email.com",
+    "name": "User Teste",
+    "password": "123abc",
+    "role": "admin"
 }
 
 ###
 
 // endpoint de login
-POST http://localhost:3003/user/login
+POST https://lama-bianca-paccola.onrender.com/user/login
 Content-Type: application/json
 
 {
-    "email": "ederson@email.com",
-    "password": "abc123"
+    "email": "teste@email.com",
+    "password": "123abc"
 }
 
 ### 
 
 // Endpoint para registrar uma banda
-POST http://localhost:3003/bands/register
+POST https://lama-bianca-paccola.onrender.com/bands/register
 Content-Type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFmY2Y5NzY3LWVhMjYtNDkyYy1hMmQxLWZkNjI0M2RlNjZkZCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3OTI1MDk4MiwiZXhwIjoxNjc5MjU0NTgyfQ.IrW9YOv3EzLa9XIOxgAVNDV5wy0HfgVQjTqq8e77cd8
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOWYzMzI3LWI3ODUtNGNjZi04ZGY4LTgxY2M4MTZiZjJmMCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3OTI2NzYzNCwiZXhwIjoxNjc5NDQwNDM0fQ.8I0VMwQdALJhcENO1lQYoCyCuAaJDdz1i579pUvw9GU
 
 {
-    "name": "Sons of Anarch",
+    "name": "Crazy Lollipop",
     "musicGenre": "Punk",
-    "responsible": "Bruce Joe"
+    "responsible": "John Hurts"
 }
 
 ###
 
 // Endpoint para buscar uma banda pelo nome - pode-se passar tanto o nome completo separando as setenças com '+' ou por uma parte que contenha no nome, no segundo caso vem todas que encontrar
-GET http://localhost:3003/bands/details?name=The+Brothers+Band
+GET https://lama-bianca-paccola.onrender.com/bands/details?name=The+Brothers+Band
 Content-Type: application/json
 
 ###
 
 //Endpoint para buscar uma banda pelo id
-GET http://localhost:3003/bands/details?id=4b123454-8479-4790-b60c-5efc77106258
+GET https://lama-bianca-paccola.onrender.com/bands/details?id=4b123454-8479-4790-b60c-5efc77106258
 Content-Type: application/json
 
 ###
 
 //Endpoint para criar um show
-POST http://localhost:3003/shows/post
+POST https://lama-bianca-paccola.onrender.com/shows/post
 Content-Type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdjZGJlN2ZiLTZjYzItNDgwYS04YTA5LWI0ZDkyNjEwNzYzOCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NzkyNTgyNTAsImV4cCI6MTY3OTI2MTg1MH0.1h79M1l0cbaHr548j85W5HXtqVPy_5o6ZiOFsKDzsCo
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOWYzMzI3LWI3ODUtNGNjZi04ZGY4LTgxY2M4MTZiZjJmMCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY3OTI2NzYzNCwiZXhwIjoxNjc5NDQwNDM0fQ.8I0VMwQdALJhcENO1lQYoCyCuAaJDdz1i579pUvw9GU
 
 {
-    "weekDay": "domingo",
-    "startTime": 12,
-    "endTime": 14,
-    "bandId": "f21cc70c-0955-499b-b543-04356c3440be"
+    "weekDay": "sábado",
+    "startTime": 18,
+    "endTime": 20,
+    "bandId": "4b123454-8479-4790-b60c-5efc77106258"
 }
 
 ###
 
 // Endpoint para buscar os shows pelo dia
-GET http://localhost:3003/shows/segunda
+GET https://lama-bianca-paccola.onrender.com/shows/sábado
 Content-Type: application/json

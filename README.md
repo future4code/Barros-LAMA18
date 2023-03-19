@@ -58,6 +58,7 @@
 ```
 git clone https://github.com/future4code/Barros-LAMA18.git
 npm install
+npm run dev
 ```
 
 > Configurar um arquivo .env com as seguintes varáveis:
