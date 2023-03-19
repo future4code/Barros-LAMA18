@@ -6,3 +6,4 @@ export const showRouter = express.Router();
 const showController = new ShowController();
 
 showRouter.post("/post", showController.postShow)
+showRouter.get("/:weekDay", showController.gethowsByDay)

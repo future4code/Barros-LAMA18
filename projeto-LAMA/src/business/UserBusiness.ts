@@ -10,6 +10,7 @@ import {
   InvalidEmail,
   InvalidName,
   InvalidPassword,
+  UserNotFound,
 } from "../error/UserErrors";
 import { BaseError } from "../error/BaseError";
 
@@ -69,24 +70,27 @@ export class UserBusiness {
       if (!user.email || !user.password) {
         throw new IncompleteUserDataLogin();
       }
-
+      
       if (!user.email.includes("@")) {
         throw new InvalidEmail();
       }
-
+      
       if (user.password.length < 6) {
         throw new InvalidPassword();
       }
-
+      
       const userFromDB = await this.userDatabase.getUserByEmail(user.email);
-
+      if(!userFromDB) {
+        throw new UserNotFound();
+      }
+      
       const hashCompare = await this.hashManager.compare(
         user.password,
         userFromDB.getPassword()
-      );
-
-      const accessToken = this.authenticator.generateToken({
-        id: userFromDB.getId(),
+        );
+        
+        const accessToken = this.authenticator.generateToken({
+          id: userFromDB.getId(),
         role: userFromDB.getRole(),
       });
 

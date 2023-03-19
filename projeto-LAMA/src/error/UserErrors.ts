@@ -35,3 +35,9 @@ export class DuplicateEmailEntry extends BaseError {
     super(409, "Duplicate entry: This email already exists in batabase");
   }
 }
+
+export class UserNotFound extends BaseError {
+  constructor() {
+    super(404, "User not found");
+  }
+}

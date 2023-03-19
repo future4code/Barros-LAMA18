@@ -19,7 +19,10 @@ export class UserDatabase extends BaseDatabase {
         .from(UserDatabase.TABLE_NAME)
         .where({ email });
 
-      return User.toUserModel(result[0]);
+        if(result[0]) {
+          return User.toUserModel(result[0]);
+        }
+         return result[0];
     } catch (error: any) {
       throw new BaseError(400, error.message || error.sqlMessage);
     }

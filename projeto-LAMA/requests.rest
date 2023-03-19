@@ -16,8 +16,8 @@ POST http://localhost:3003/user/login
 Content-Type: application/json
 
 {
-    "email": "bianca@email.com",
-    "password": "123abc"
+    "email": "ederson@email.com",
+    "password": "abc123"
 }
 
 ### 
@@ -50,10 +50,17 @@ Content-Type: application/json
 //Endpoint para criar um show
 POST http://localhost:3003/shows/post
 Content-Type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdjZGJlN2ZiLTZjYzItNDgwYS04YTA5LWI0ZDkyNjEwNzYzOCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NzkyNTgyNTAsImV4cCI6MTY3OTI2MTg1MH0.1h79M1l0cbaHr548j85W5HXtqVPy_5o6ZiOFsKDzsCo
 
 {
-    "weekDay": "sexta",
-    "startTime": 18,
-    "endTime": 19,
+    "weekDay": "domingo",
+    "startTime": 12,
+    "endTime": 14,
     "bandId": "f21cc70c-0955-499b-b543-04356c3440be"
 }
+
+###
+
+// Endpoint para buscar os shows pelo dia
+GET http://localhost:3003/shows/segunda
+Content-Type: application/json

@@ -1,4 +1,5 @@
 import { BandDatabase } from "../data/BandDatabase";
+import { ExpiredToken, MissingToken } from "../error/AuthenticatorErrors";
 import {
   BandNotFound,
   DuplicateNameEntryError,
@@ -8,7 +9,7 @@ import {
   InvlidTypeOrLengthGenre,
   UnaunthorizedUser,
 } from "../error/BandErrors";
-import { BaseError, ExpiredToken, MissingToken } from "../error/BaseError";
+import { BaseError } from "../error/BaseError";
 import { Band, bandInputDTO } from "../model/Band";
 import { UserRole } from "../model/User";
 import { Authenticator } from "../services/Authenticator";
