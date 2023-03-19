@@ -1,4 +1,7 @@
 import knex, { Knex } from "knex";
+import dotenv from 'dotenv';
+
+dotenv.config();
 export abstract class BaseDatabase {
   private static connection: Knex | null = null;
 
