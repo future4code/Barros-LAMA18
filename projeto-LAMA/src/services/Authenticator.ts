@@ -1,5 +1,4 @@
 import * as jwt from "jsonwebtoken";
-import { MissingToken } from "../error/BandErrors";
 export class Authenticator {
   public generateToken(
     input: AuthenticationData,
@@ -19,16 +18,12 @@ export class Authenticator {
   }
 
   public getData(token: string): AuthenticationData {
-    try {
-      const payload = jwt.verify(token, process.env.JWT_KEY as string) as any;
-      const result = {
-        id: payload.id,
-        role: payload.role,
-      };
-      return result;
-    } catch (error: any) {
-      throw new MissingToken();
-    }
+    const payload = jwt.verify(token, process.env.JWT_KEY as string) as any;
+    const result = {
+      id: payload.id,
+      role: payload.role
+    };
+    return result;
   }
 }
 
@@ -36,3 +31,4 @@ interface AuthenticationData {
   id: string;
   role?: string;
 }
+

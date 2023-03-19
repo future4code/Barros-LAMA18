@@ -9,12 +9,6 @@ export class UnaunthorizedUser extends BaseError {
     super(401, "Authorized only for admins");
   }
 }
-export class MissingToken extends BaseError {
-  constructor() {
-    super(401, "Must pass a valid token");
-  }
-}
-
 export class BandNotFound extends BaseError {
   constructor() {
     super(404, "Band not found");
@@ -35,6 +29,12 @@ export class DuplicateNameEntryError extends BaseError {
 
 export class InvalidNameBand extends BaseError {
   constructor() {
-    super(422, "Invalid too short name")
+    super(422, "Invalid name")
+  }
+}
+
+export class InvlidTypeOrLengthGenre extends BaseError {
+  constructor() {
+    super(422, "Invalid genre")
   }
 }
