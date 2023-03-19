@@ -57,7 +57,6 @@
 
 ```
 git clone https://github.com/future4code/Barros-LAMA18.git
-cd projeto-LAMA
 npm install
 ```
 
